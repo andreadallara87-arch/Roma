@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roma · 12–13 settembre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1E2136; --ink2:#4A4C66; --tenue:#7C7E96;
+  --rosa:#E0356B; --oro:#E8A317; --verde:#12735E;
+  --vetro:rgba(255,255,255,.58); --bordo:rgba(255,255,255,.75); --linea:rgba(30,33,54,.10);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Instrument Sans",-apple-system,system-ui,sans-serif;
+  color:var(--ink); font-size:16px; line-height:1.5; -webkit-text-size-adjust:100%;
+  background:
+    radial-gradient(1000px 620px at 12% -8%, #FFE7D2 0%, rgba(255,231,210,0) 62%),
+    radial-gradient(880px 560px at 96% 4%, #DCE9FF 0%, rgba(220,233,255,0) 60%),
+    radial-gradient(760px 700px at 50% 108%, #FFE1EC 0%, rgba(255,225,236,0) 62%),
+    #F4F5F8;
+  background-attachment:fixed;
+}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 60px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",sans-serif;font-weight:800;letter-spacing:-.02em;margin:0}
+a{color:var(--ink)}
+
+/* --- vetro --- */
+.card{
+  background:var(--vetro);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  backdrop-filter:blur(18px) saturate(150%);
+  border:1px solid var(--bordo);
+  border-radius:20px;
+  box-shadow:0 8px 26px rgba(30,33,54,.07);
+  padding:18px; margin-bottom:14px;
+}
+.card.stretta{padding:14px 16px}
+
+/* --- testata --- */
+header{padding:26px 0 14px;position:relative}
+.kicker{font-size:12.5px;color:var(--tenue);margin:0 0 6px;letter-spacing:.02em}
+h1{font-size:38px;line-height:1}
+h1 em{font-style:normal;display:block;color:var(--rosa);font-size:23px;margin-top:6px}
+.eroe{
+  border-radius:22px;overflow:hidden;margin-top:16px;padding:16px;
+  border:1px solid var(--bordo);
+  background:linear-gradient(200deg,rgba(255,255,255,.9),rgba(255,255,255,.5));
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.ore{display:flex;gap:8px}
+.ora{flex:1;text-align:center}
+.ora b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:19px;font-weight:800}
+.ora span{font-size:10.5px;color:var(--ink2);display:block;line-height:1.25;margin-top:2px}
+
+/* --- schede senza javascript --- */
+.tabin{position:absolute;opacity:0;pointer-events:none}
+nav{position:sticky;top:0;z-index:50;padding:10px 0;margin:0 -16px 4px;padding-left:16px;padding-right:16px;
+    background:linear-gradient(#F4F5F8ee,#F4F5F8bb);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.tabs{display:flex;gap:6px}
+.tabs label{
+  flex:1;text-align:center;font-size:13.5px;font-weight:600;padding:9px 2px;border-radius:999px;cursor:pointer;
+  background:var(--vetro);border:1px solid var(--bordo);color:var(--ink2);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+}
+#t1:checked~nav label[for=t1],#t2:checked~nav label[for=t2],
+#t3:checked~nav label[for=t3],#t4:checked~nav label[for=t4]{
+  background:var(--ink);color:#fff;border-color:var(--ink)
+}
+.pannello{display:none}
+#t1:checked~main #p1,#t2:checked~main #p2,#t3:checked~main #p3,#t4:checked~main #p4{display:block}
+
+h2{font-size:25px;margin:18px 0 2px}
+.sotto{font-size:14px;color:var(--tenue);margin:0 0 14px}
+h3{font-size:17px}
+
+/* --- linea del tempo --- */
+.tappa{position:relative;padding:14px 16px 14px 62px}
+.tappa .t{position:absolute;left:14px;top:16px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;color:var(--rosa)}
+.tappa h3{font-size:16.5px;font-weight:600;font-family:"Instrument Sans",sans-serif}
+.tappa p{margin:5px 0 0;font-size:14.5px;color:var(--ink2)}
+.tappa.chiave{border-left:3px solid var(--rosa)}
+
+details{margin-top:9px}
+summary{font-size:13px;font-weight:600;color:var(--verde);cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:" ▾"}
+details[open] summary::after{content:" ▴"}
+details>div{padding-top:8px}
+details p{margin:0 0 8px;font-size:14px}
+
+.link{display:inline-block;font-size:13px;font-weight:600;text-decoration:none;
+  background:rgba(255,255,255,.7);border:1px solid var(--bordo);border-radius:999px;padding:7px 13px;margin:8px 6px 0 0}
+.link.pieno{background:var(--ink);color:#fff;border-color:var(--ink)}
+.link.grande{display:block;text-align:center;padding:13px;font-size:15px;margin:10px 0 0}
+
+.banner{border-radius:22px;border:1px solid var(--bordo);background-size:cover;background-position:center;
+  min-height:190px;display:flex;align-items:flex-end;margin:16px 0 14px;box-shadow:0 8px 26px rgba(30,33,54,.07)}
+.banner-txt{padding:14px 16px 12px;width:100%}
+.banner-txt h2{margin:0}
+.banner-txt .sotto{margin:4px 0 0}
+.mappa{width:100%;height:300px;border:0;border-radius:16px;display:block;background:rgba(255,255,255,.5)}
+.nota{font-size:12.5px;color:var(--tenue);margin:8px 0 0}
+
+.posto{padding:12px 0;border-top:1px solid var(--linea)}
+.posto:first-of-type{border-top:0}
+.posto h4{margin:0;font-size:15.5px;font-weight:600}
+.posto .meta{font-size:12px;color:var(--tenue);margin:2px 0 5px}
+.posto p{margin:0;font-size:14px;color:var(--ink2)}
+
+.avviso{border-left:3px solid var(--oro);padding-left:12px;margin:4px 0 12px}
+.avviso.forte{border-left-color:var(--rosa)}
+.avviso h3{font-size:14.5px;font-family:"Instrument Sans",sans-serif;font-weight:700}
+.avviso p{margin:3px 0 0;font-size:14px;color:var(--ink2)}
+
+.biglietto{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--linea);background:#fff;margin-top:10px}
+
+ul,ol{margin:8px 0 0;padding-left:19px;font-size:14.5px;color:var(--ink2)}
+li{margin-bottom:6px}
+.dati{list-style:none;padding:0;margin:8px 0 0;font-size:14.5px}
+.dati li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--linea);color:var(--ink)}
+.dati li:first-child{border-top:0}
+.dati span{color:var(--tenue);font-size:13px}
+.dati b{font-weight:600;text-align:right}
+.vuoto{color:var(--rosa);font-weight:600}
+.numeri{list-style:none;padding:0;margin:0}
+.numeri li{border-top:1px solid var(--linea)}
+.numeri li:first-child{border-top:0}
+.numeri a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;text-decoration:none;font-size:14.5px}
+.numeri em{font-style:normal;color:var(--tenue);font-size:12.5px}
+footer{font-size:12px;color:var(--tenue);padding:6px 2px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<input class="tabin" type="radio" name="tab" id="t1" checked>
+<input class="tabin" type="radio" name="tab" id="t2">
+<input class="tabin" type="radio" name="tab" id="t3">
+<input class="tabin" type="radio" name="tab" id="t4">
+
+<header>
+  <p class="kicker">Andrea e Arianna &middot; 12–13 settembre 2026</p>
+  <h1>Roma<em>due giorni, tre orari fissi</em></h1>
+  <div class="eroe">
+    <div class="ore">
+      <div class="ora"><b>10:24</b><span>arrivo a Termini</span></div>
+      <div class="ora"><b>16:30</b><span>Jova al Circo Massimo</span></div>
+      <div class="ora"><b>19:00</b><span>partenza da Termini</span></div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="tabs">
+    <label for="t1">Biglietti</label>
+    <label for="t2">Sabato</label>
+    <label for="t3">Domenica</label>
+    <label for="t4">Utile</label>
+  </div>
+</nav>
+
+<main>
+  <section class="pannello" id="p1"><div class="banner" style="background-image:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.55) 46%,rgba(255,255,255,.93) 100%),url('https://commons.wikimedia.org/wiki/Special:FilePath/Rom-Circus_Maximus.JPG?width=1200')"><div class="banner-txt"><h2>Biglietti e prenotazioni</h2><p class="sotto">Gli orari qui, i biglietti veri nella cartella iCloud condivisa.</p></div></div>
+<div class="card">
+  <a class="link pieno grande" target="_blank" rel="noopener" href="https://www.icloud.com/iclouddrive/0ddbrwMYKt1Zso6falxw6f30w#Roma">Apri i biglietti in iCloud</a>
+  <div class="avviso forte" style="margin-top:14px">
+    <h3>Scaricateli prima di partire</h3>
+    <p>Aprite i due PDF una volta da casa, così restano sul telefono: al Circo Massimo la rete è satura e da lì non si scarica niente. Ai controlli luminosità al massimo, e al concerto ognuno mostra il proprio biglietto.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Italo andata &middot; sabato 12</h3>
+  <ul class="dati">
+    <li><span>Treno</span><b>9971 &middot; Smart</b></li>
+    <li><span>Torino Porta Susa</span><b>06:10</b></li>
+    <li><span>Roma Termini</span><b>10:24</b></li>
+    <li><span>Carrozza e posti</span><b>10 &middot; 37 e 38</b></li>
+    <li><span>In stazione per le</span><b>05:50</b></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Italo ritorno &middot; domenica 13</h3>
+  <ul class="dati">
+    <li><span>Treno</span><b>9994 &middot; Smart</b></li>
+    <li><span>Roma Termini</span><b>19:00</b></li>
+    <li><span>Torino Porta Susa</span><b>23:19</b></li>
+    <li><span>Carrozza e posti</span><b>10 &middot; 47 e 48</b></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Jova Summer Party</h3>
+  <ul class="dati">
+    <li><span>Dove</span><b>Circo Massimo</b></li>
+    <li><span>Porte</span><b>15:00</b></li>
+    <li><span>Inizio</span><b>16:30</b></li>
+    <li><span>Fine</span><b>fra le 23 e le 24</b></li>
+    <li><span>Biglietti</span><b>2 &middot; Posto Unico</b></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Domus Tiberina</h3>
+  <ul class="dati">
+    <li><span>Indirizzo</span><b>Via in Piscinula 37</b></li>
+    <li><span>Telefono</span><b>06 581 3648</b></li>
+    <li><span>Numero prenotazione</span><b class="vuoto">da inserire</b></li>
+    <li><span>Check-in</span><b class="vuoto">da confermare</b></li>
+    <li><span>Ingresso notturno</span><b class="vuoto">chiedere il codice</b></li>
+  </ul>
+  <a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Domus%20Tiberina%20Roma">Apri in Maps</a>
+  <a class="link" href="tel:+39065813648">Chiama l'hotel</a>
+</div>
+</section>
+  <section class="pannello" id="p2"><div class="banner" style="background-image:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.55) 46%,rgba(255,255,255,.93) 100%),url('https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_di_Santa_Maria_-_Trastevere_-_Rome%2C_Italy_-_DSC00438.jpg?width=1200')"><div class="banner-txt"><h2>Sabato 12</h2><p class="sotto">Torino, Trastevere, Circo Massimo. Dall'hotel al palco sono 15 minuti a piedi.</p></div></div>
+
+<div class="card">
+  <h3>La mappa della giornata</h3>
+  <iframe class="mappa" src="https://maps.google.com/maps?saddr=Via+in+Piscinula+37,+Roma&daddr=Isola+Tiberina,+Roma+to:Circo+Massimo,+Roma&dirflg=w&hl=it&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa del sabato"></iframe>
+  <a class="link pieno grande" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Via%20in%20Piscinula%2037%2C%20Roma&waypoints=Isola%20Tiberina%2C%20Roma%7CPiazza%20Santa%20Maria%20in%20Trastevere%2C%20Roma&destination=Circo%20Massimo%2C%20Roma">Apri il percorso in Google Maps</a>
+  <a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Circo%20Massimo%2C%20Roma&destination=Via%20in%20Piscinula%2037%2C%20Roma">Il rientro di notte</a>
+  <p class="nota">La mappa qui dentro si muove e si ingrandisce quando il file è aperto in un browser. Il pulsante apre l'app Maps con il GPS.</p>
+</div>
+<div class="card tappa"><div class="t">06:10</div><h3>Italo 9971 da Porta Susa</h3><p>Quattro ore e un quarto. In stazione per le 05:50: le porte si chiudono due minuti prima della partenza.</p></div><div class="card tappa chiave"><div class="t">10:24</div><h3>Arrivo a Roma Termini</h3><p>A Trastevere la metro non arriva. Bus H da piazza dei Cinquecento fino a viale Trastevere, circa 30 minuti, 1,50 €. Oppure taxi, 15–20 minuti e intorno ai 15 €.</p><a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Roma+Termini&destination=Via+in+Piscinula+37,+Roma&travelmode=transit">Percorso Termini → hotel</a></div><div class="card tappa"><div class="t">11:00</div><h3>Domus Tiberina, via in Piscinula 37</h3><p>Piazza in Piscinula, all'imbocco di ponte Cestio. Isola Tiberina davanti, Trastevere alle spalle, Circo Massimo a un quarto d'ora.</p><details><summary>Com'è fatto</summary><div><p>Ex convento: scale strette e ripide, niente ascensore, in certe camere un'altra rampa interna. Con gli zainetti è un dettaglio.</p><p>Se la camera non è pronta, lasciate gli zaini in reception e uscite.</p></div></details></div><div class="card tappa"><div class="t">11:30</div><h3>Trastevere e Isola Tiberina</h3><p>Un'ora scarsa basta: ponte Fabricio (il ponte romano più antico ancora in uso, 62 a.C.), Santa Maria in Trastevere con i mosaici dorati in facciata, i vicoli di via della Lungaretta.</p></div><div class="card">
+  <div class="t" style="position:static;color:var(--rosa);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px">12:30</div>
+  <h3 style="margin-top:2px">Pranzo a Trastevere</h3>
+  <p style="font-size:14.5px;color:var(--ink2);margin:5px 0 4px">Mangiate seriamente adesso: al concerto ci sono i food truck, ma con decine di migliaia di persone in fila.</p>
+  <div class="posto"><h4>Nannarella</h4><p class="meta">Piazza San Calisto 7a &middot; 25–35 € &middot; non si prenota</p>
+    <p>Coda alla vaccinara, polpette, carbonara. Alle 12:15 la fila per due è ancora corta.</p>
+    <a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Nannarella%20Roma">Maps</a></div>
+  <div class="posto"><h4>Antica Osteria Rugantino</h4><p class="meta">Via della Lungaretta 54 &middot; 30–40 € &middot; si prenota</p>
+    <p>Tre minuti dall'hotel, sala vecchia Roma. L'opzione con il tavolo garantito.</p>
+    <a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Antica%20Osteria%20Rugantino%20Roma">Maps</a>
+    <a class="link" href="tel:+39065818517">06 581 8517</a></div>
+  <div class="posto"><h4>Alice Pizza</h4><p class="meta">Via di San Francesco a Ripa &middot; 3–6 € &middot; al taglio</p>
+    <p>Se preferite non perdere tempo a tavola e arrivare presto al Circo Massimo.</p>
+    <a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Alice%20Pizza%20Trastevere%20Roma">Maps</a></div>
+</div><div class="card tappa"><div class="t">14:15</div><h3>Rientro in hotel</h3><p>Cambio, crema solare, scarpe chiuse: si sta in piedi su terra battuta dalle 15 a mezzanotte. Telefono carico, biglietto già aperto.</p></div><div class="card tappa chiave"><div class="t">15:00</div><h3>A piedi al Circo Massimo</h3><p>Poco più di un chilometro, 15 minuti: ponte Cestio o ponte Palatino, Bocca della Verità, via della Greca.</p><details><summary>Se avete fame o sete prima di entrare</summary><div><p><b>075 zerosettantacinque</b> e <b>Guenda</b>, in via dei Cerchi, sono sul bordo del Circo Massimo: focacce, birre, tavolini fino a notte fonda.</p><a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=075%20zerosettantacinque%20Roma">075 su Maps</a></div></details></div><div class="card tappa chiave"><div class="t">16:30</div><h3>Jova Summer Party</h3><p>Porte alle 15:00. Si alternano Cor Veleno, Mobrici, BalQeis, Ayom, Matteo Alieno e TÄRA; ospite della serata Benny Benassi.</p></div><div class="card tappa chiave"><div class="t">23–24</div><h3>Rientro a piedi, 15 minuti</h3><p>Dalle 22:00 la fermata Circo Massimo della metro B è chiusa e le strade intorno sono interdette. A voi non serve: si esce, si scende verso il Tevere e si è in hotel in un quarto d'ora.</p><a class="link pieno" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Circo%20Massimo%2C%20Roma&destination=Via%20in%20Piscinula%2037%2C%20Roma">Percorso del rientro</a></div><div class="card tappa"><div class="t">24:00</div><h3>Ultimo giro, se resistete</h3><p>Trastevere il sabato è sveglio fino a tardi. Alice Pizza chiude a mezzanotte e mezza, la pasticceria di Checco er Carettiere in via Benedetta all'una: cornetto caldo appena sfornato.</p></div></section>
+  <section class="pannello" id="p3"><div class="banner" style="background-image:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.55) 46%,rgba(255,255,255,.93) 100%),url('https://commons.wikimedia.org/wiki/Special:FilePath/Roma_Giardino_degli_Aranci_veduta.JPG?width=1200')"><div class="banner-txt"><h2>Domenica 13</h2><p class="sotto">Zaino in spalla, niente ritorni indietro: si parte da Trastevere e si finisce a Termini. Circa 7 km in nove ore.</p></div></div>
+
+<div class="card">
+  <h3>L'anello della domenica</h3>
+  <iframe class="mappa" src="https://maps.google.com/maps?saddr=Via+in+Piscinula+37,+Roma&daddr=Giardino+degli+Aranci,+Roma+to:Colosseo,+Roma+to:Pantheon,+Roma+to:Fontana+di+Trevi,+Roma+to:Roma+Termini&dirflg=w&hl=it&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa della domenica"></iframe>
+  <a class="link pieno grande" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Via%20in%20Piscinula%2037%2C%20Roma&waypoints=Giardino%20degli%20Aranci%2C%20Roma%7CPiazza%20dei%20Cavalieri%20di%20Malta%2C%20Roma%7CBocca%20della%20Verita%2C%20Roma%7CColosseo%2C%20Roma%7CPiazza%20del%20Campidoglio%2C%20Roma%7CPantheon%2C%20Roma%7CPiazza%20Navona%2C%20Roma%7CFontana%20di%20Trevi%2C%20Roma&destination=Roma%20Termini">Apri il percorso in Google Maps</a>
+  <p class="nota">Otto tappe in fila, tutte a piedi, con Termini come arrivo.</p>
+</div>
+<div class="card">
+  <div class="t" style="position:static;color:var(--rosa);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px">8:30</div>
+  <h3 style="margin-top:2px">Colazione</h3>
+  <div class="posto"><h4>Caffè Trastévere</h4><p class="meta">Viale di Trastevere 50 &middot; apre alle 5:30 anche di domenica &middot; 5 min</p>
+    <p>Bar d'angolo sempre pieno, cornetto e cappuccino al bancone. Il più comodo.</p>
+    <a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Caff%C3%A8%20Trast%C3%A9vere%20Roma">Maps</a></div>
+  <div class="posto"><h4>Le Levain</h4><p class="meta">Via Luigi Santini 22 &middot; domenica dalle 8:00 &middot; 10 min</p>
+    <p>La colazione buona invece di quella comoda: lievitati di scuola francese, i migliori del quartiere.</p>
+    <a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Le%20Levain%20Roma">Maps</a></div>
+</div><div class="card tappa chiave"><div class="t">9:30</div><h3>Aventino: aranci e serratura</h3><p>Ponte Palatino e su per il Clivo dei Publicii, 15 minuti in salita. Tre cose vicinissime, tutte gratis.</p><details><summary>Nell'ordine giusto</summary><div><p><b>Giardino degli Aranci</b> — terrazza sul Tevere con la cupola di San Pietro davanti. Alle 9:45 è ancora vuoto.</p><p><b>Santa Sabina</b> — V secolo, porta lignea originale. La domenica mattina ci sono le messe.</p><p><b>Buco della serratura</b> — dal buco della porta si inquadra San Pietro in fondo a un viale di siepi. Dopo le 10:30 la fila raddoppia.</p></div></details></div><div class="card tappa"><div class="t">10:45</div><h3>Bocca della Verità e Circo Massimo</h3><p>Scendendo dall'Aventino: la Bocca nel portico di Santa Maria in Cosmedin, i templi rotondi nel prato di fronte, e l'arena di ieri sera che stanno già rimontando per la seconda data.</p></div><div class="card tappa"><div class="t">11:45</div><h3>Colosseo, Fori, Campidoglio</h3><p>Giro esterno del Colosseo e Arco di Costantino, poi via dei Fori Imperiali. Dentro il Colosseo non si entra senza biglietto prenotato, e ci perdereste due ore.</p><div class="avviso"><p>La terrazza del Campidoglio dietro il palazzo dei Conservatori ha la vista migliore sul Foro Romano ed è gratis.</p></div></div><div class="card">
+  <div class="t" style="position:static;color:var(--rosa);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px">13:15</div>
+  <h3 style="margin-top:2px">Pranzo</h3>
+  <div class="posto"><h4>La Nuova Piazzetta</h4><p class="meta">Vicolo del Buon Consiglio 23a &middot; dietro il Colosseo &middot; 11:30–22:30</p>
+    <p>In un vicolo a due passi dai Fori ma senza il buttadentro davanti. Paste fresche.</p>
+    <a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=La%20Nuova%20Piazzetta%20Roma">Maps</a></div>
+  <div class="posto"><h4>Renato al Ghetto</h4><p class="meta">Via del Portico d'Ottavia 5 &middot; domenica 12:00–23:00</p>
+    <p>Cucina giudaico-romanesca, cinque minuti dall'hotel. Carciofi alla giudia obbligatori.</p>
+    <a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Renato%20al%20Ghetto%20Roma">Maps</a></div>
+</div><div class="card tappa"><div class="t">14:45</div><h3>Pantheon e piazza Navona</h3><p>Dal Campidoglio dieci minuti di passeggiata piana. Pantheon 5 €, prenotabile online; Navona a quattro minuti.</p><details><summary>La sosta seduta</summary><div><p>Mezz'ora ai tavolini di Navona: 5–6 € di caffè, ma dopo due giorni in piedi è la cosa che serve di più.</p></div></details></div><div class="card tappa"><div class="t">16:15</div><h3>Fontana di Trevi</h3><p>Da Navona dodici minuti. Nel tardo pomeriggio la luce è migliore e la calca un po' meno peggio.</p></div><div class="card tappa chiave"><div class="t">17:45</div><h3>Verso Termini</h3><p>Metro A da Barberini, due fermate, cinque minuti. Oppure venti minuti a piedi per via Nazionale. In stazione per le 18:20.</p><a class="link pieno" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Fontana+di+Trevi,+Roma&destination=Roma+Termini&travelmode=walking">Trevi → Termini a piedi</a></div><div class="card tappa chiave"><div class="t">19:00</div><h3>Italo 9994</h3><p>Il binario compare sui tabelloni 15–20 minuti prima. I binari 1–2 est e 25–29 sono lontani dall'atrio: calcolate dieci minuti di camminata.</p></div></section>
+  <section class="pannello" id="p4"><div class="banner" style="background-image:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.55) 46%,rgba(255,255,255,.93) 100%),url('https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_Navona_%28Fountain_of_the_Four_Rivers%29%2C_Rome.jpg?width=1200')"><div class="banner-txt"><h2>Numeri e link utili</h2><p class="sotto">Da tenere a portata, soprattutto quando il telefono prende poco.</p></div></div>
+
+<div class="card">
+  <h3>Telefono</h3>
+  <ul class="numeri">
+    <li><a href="tel:112"><span>Emergenze &middot; <em>unico europeo</em></span><b>112</b></a></li>
+    <li><a href="tel:+39065813648"><span>Domus Tiberina &middot; <em>hotel</em></span><b>06 581 3648</b></a></li>
+    <li><a href="tel:+390606708"><span>Italo &middot; <em>assistenza</em></span><b>06 07 08</b></a></li>
+    <li><a href="tel:+390663570"><span>Radio Taxi Roma</span><b>06 3570</b></a></li>
+    <li><a href="tel:+390666645"><span>Pronto Taxi</span><b>06 6645</b></a></li>
+    <li><a href="tel:+390657003"><span>Atac &middot; <em>info trasporti</em></span><b>06 57003</b></a></li>
+    <li><a href="tel:+39060608"><span>Roma &middot; <em>info turistiche</em></span><b>06 0608</b></a></li>
+    <li><a href="tel:+39065818517"><span>Osteria Rugantino &middot; <em>prenotazioni</em></span><b>06 581 8517</b></a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Link</h3>
+  <ul class="numeri">
+    <li><a target="_blank" rel="noopener" href="https://www.icloud.com/iclouddrive/0ddbrwMYKt1Zso6falxw6f30w#Roma"><span>Biglietti &middot; <em>cartella iCloud</em></span><b>→</b></a></li>
+    <li><a target="_blank" rel="noopener" href="https://www.italotreno.com/it"><span>Italo &middot; <em>stato del treno</em></span><b>→</b></a></li>
+    <li><a target="_blank" rel="noopener" href="https://www.tridentmusic.it/eventi-trident-music/jovasummerparty2026/jovanotti-12-settembre-2026-roma-circo-massimo.html"><span>Jova Summer Party &middot; <em>pagina ufficiale</em></span><b>→</b></a></li>
+    <li><a target="_blank" rel="noopener" href="https://www.atac.roma.it"><span>Atac &middot; <em>bus e metro</em></span><b>→</b></a></li>
+    <li><a target="_blank" rel="noopener" href="https://www.free-now.com/it/"><span>FreeNow &middot; <em>taxi</em></span><b>→</b></a></li>
+    <li><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Domus%20Tiberina%20Roma"><span>Hotel su Maps</span><b>→</b></a></li>
+    <li><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Circo%20Massimo%20Roma"><span>Circo Massimo su Maps</span><b>→</b></a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Muoversi</h3>
+  <ul>
+    <li><b>BIT 1,50 €</b>: 100 minuti su bus e tram, una corsa in metro.</li>
+    <li><b>Contactless</b>: carta o telefono sul validatore, 1,50 € a corsa, niente code.</li>
+    <li>Le vostre linee: <b>bus H</b> per Termini, <b>tram 8</b> per piazza Venezia.</li>
+    <li>Il resto è a piedi: Circo Massimo 15 minuti, Ghetto 5, Pantheon 15, Aventino 15.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Il concerto</h3>
+  <div class="avviso forte">
+    <h3>Strade chiuse e metro sospesa</h3>
+    <p>Dall'11 settembre via dei Cerchi e via del Circo Massimo sono chiuse al traffico. Sabato e domenica, dalle 22:00 a fine concerto, la metro B non ferma a Circo Massimo.</p>
+  </div>
+  <ul>
+    <li>Porte 15:00, inizio 16:30, fine fra le 23 e mezzanotte.</li>
+    <li>Terra battuta e polvere: scarpe chiuse, mai sandali.</li>
+    <li>Rete satura: punto d'incontro deciso prima di entrare, i messaggi non partono.</li>
+    <li>Documento d'identità: su Italo lo chiedono.</li>
+    <li>Ambiente Smart: bagaglio entro 75×53×30 cm.</li>
+  </ul>
+</div>
+
+<footer>Orari, prezzi e recensioni verificati il 7 settembre 2026. Ricontrollate viabilità e trasporti il giorno prima.</footer>
+</section>
+</main>
+
+</div>
+</body>
+</html>
